@@ -26,7 +26,7 @@ function! DarkenWind#start() abort
 
   augroup DarkenWind
     autocmd!
-    autocmd TextChanged * call s:shot()
+    autocmd TextChanged * let [s:xo, s:yo] = [screencol() - wincol(), screenrow() - winline()] | call s:shot()
     autocmd TextChangedI * call s:shot()
     autocmd InsertCharPre * let [s:xo, s:yo] = [screencol() - wincol(), screenrow() - winline()]
     autocmd VimLeave * call DarkenWind#stop()
